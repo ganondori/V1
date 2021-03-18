@@ -1,0 +1,256 @@
+MAIN
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+using System;
+
+using System.IO;
+
+
+
+namespace Registro_v1
+
+{
+
+  class program
+
+  {
+
+​    static void Main(string[] args)
+
+​    {
+
+​      \#region ExternCode
+
+
+
+​      /* Stream fs = new 			FileStream("C:/Users/KingTarot/Desktop/1/All3/Programación/Codes/Registros/Datos.csv",FileMode.Create,FileAccess.Write);
+
+​      StreamWriter writer = new StreamWriter(fs);
+
+​      writer.WriteLine("ID, Name, LastName, age");
+
+​      writer.Close();*/
+
+
+
+​      \#endregion
+
+
+
+​      \#region vars
+
+
+
+​      //VARIABLES
+
+​      string Id, Name, LaName, choice;
+
+​      int age;
+
+​      \#endregion
+
+
+
+​      \#region Main
+
+
+
+​      Info:
+
+​      Console.Clear();
+
+​      System.Console.WriteLine("Write your ID: ");
+
+​      Id = Console.ReadLine();
+
+​      System.Console.WriteLine("Write your Name: ");
+
+​      Name = Console.ReadLine();
+
+​      System.Console.WriteLine("Write your LastName: ");
+
+​      LaName = Console.ReadLine();
+
+​      System.Console.WriteLine("How old are you? ");
+
+​      age = Convert.ToInt32(Console.ReadLine());
+
+
+
+​      C1:
+
+​      Console.Clear();
+
+​      System.Console.WriteLine("Do you want to save this info? Y/N");
+
+​      choice = Console.ReadLine().ToUpper();
+
+
+
+​      if(choice == "Y")
+
+​      {
+
+​        Persona Anonimo = new Persona (Id,Name,LaName,age);
+
+​        Console.Clear();
+
+​        Anonimo.show();
+
+​        C2:
+
+​        System.Console.WriteLine("Is this the information that you want to save? Y/N");
+
+​        choice = Console.ReadLine().ToUpper();
+
+
+
+​        if(choice == "Y")
+
+​        {
+
+​          Anonimo.save();
+
+​        }
+
+​        else if(choice == "N")
+
+​        {
+
+​          goto Info;
+
+​        }
+
+​        else 
+
+​        {
+
+​          System.Console.WriteLine("The answer is invalid");
+
+​          Console.ReadKey();
+
+​          goto C2;
+
+​        }
+
+​      }
+
+​      else if(choice == "N")
+
+​      {
+
+​        goto Info;
+
+​      }
+
+​      else
+
+​      {
+
+​        System.Console.WriteLine("This answer is invalid");
+
+​        Console.ReadKey();
+
+​        goto C1;
+
+​      }
+
+​      \#endregion
+
+​    }
+
+  }
+
+}
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CLASS
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+using System;
+
+using System.IO;
+
+
+
+namespace Registro_v1
+
+{
+
+  class Persona
+
+  {
+
+​    public string ID {get; set;}
+
+​    public string NAME{get;set;}
+
+​    public string LANAME{get;set;}
+
+​    public int AGE{get;set;}
+
+
+
+​    public Persona(string id, string name, string Aname, int age)
+
+​    {
+
+​      ID = id;
+
+​      NAME = name;
+
+​      LANAME = Aname;
+
+​      AGE = age;
+
+​    }
+
+
+
+​    public void show()
+
+​    {
+
+​      Persona Anonis = new Persona(ID, NAME, LANAME, AGE);
+
+​      Console.Clear();
+
+​      System.Console.WriteLine(Anonis.ID);
+
+​      System.Console.WriteLine(Anonis.NAME);
+
+​      System.Console.WriteLine(Anonis.LANAME);
+
+​      System.Console.WriteLine(Anonis.AGE);
+
+​      System.Console.WriteLine("");
+
+​    }
+
+
+
+​    public void save()
+
+​    {
+
+​      Stream fs = new FileStream("C:/Users/KingTarot/Desktop/1/All3/Programación/Codes/Registros/Datos.csv",FileMode.Append,FileAccess.Write);
+
+​      StreamWriter writer = new StreamWriter(fs);
+
+​      writer.WriteLine(ID + ", " + NAME + ", " + LANAME + ", " + AGE);
+
+​      writer.Close();
+
+​      System.Console.WriteLine("Your information has been safe");
+
+​    }
+
+  }
+
+}
